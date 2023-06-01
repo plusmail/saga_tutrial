@@ -6,9 +6,6 @@ const UsersPage = ()=>{
     return (
         <>
         <UsersContainer />
-        <Routes>
-            <Route path="/users/:id" element={<UserPage/>} />
-        </Routes>
         </>
     )
 }

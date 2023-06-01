@@ -24,7 +24,6 @@ const getUserById = (id) => {
 function* getUserSaga(action) {
   try {
     const response = yield call(getUserById, action.payload);
-    console.log("99999999->", response);
     yield put(getUserSuccess(response.data));
   } catch (e) {
     yield put(getUserFailure(e));
@@ -36,7 +35,7 @@ export function* usersSaga() {
 }
 
 const initialState = {
-  user: null,
+  user: [],
   loading: {
     user: false,
   },
@@ -68,6 +67,6 @@ function user(state = initialState, action) {
     default:
       return state;
   }
-};
+}
 
 export default user;

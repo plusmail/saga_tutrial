@@ -17,7 +17,8 @@ export const getUsers = () => async (dispatch) => {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/users"
     );
-    dispatch(getUsersSuccess(response));
+    console.log("getUsers->", response);
+    dispatch(getUsersSuccess(response.data));
   } catch (e) {
     dispatch(getUsersFailure(e));
     throw e;
@@ -25,7 +26,7 @@ export const getUsers = () => async (dispatch) => {
 };
 
 const initialState = {
-  users: null,
+  users: [],
   loading: {
     users: false,
   },
@@ -42,12 +43,12 @@ function users(state = initialState, action) {
         loading: { ...state.loading, users: true },
       };
     case GET_USERS_SUCCESS:
-      console.log("GET_USERS_SUCCESS", action.payload.data);
+      console.log("GET_USERS_SUCCESS", action.payload);
 
       return {
         ...state,
         loading: { ...state.loading, users: false },
-        users: action.payload.data,
+        users: action.payload,
       };
     case GET_USERS_FAILURE:
       return {
