@@ -11,11 +11,11 @@ const App = () => {
       {/* <CounterContainer />
       <hr />
       <SampleContainer /> */}
-
+        <UsersPage/>
         <Routes>
             <Route path="/users/:id" element={<UserPage/>} />
         </Routes>
-      <UsersPage/>
+
 
     </div>
   );
